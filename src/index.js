@@ -74,12 +74,19 @@ function Menu() {
 
 
       {/* rendering the pizza data list by using the map method here */}
+      {/* map method is bsically a method which work on each of the array list(pizzaData) 
+      and do some opeartion and return the new array list */}
+      {/* Inside the ul element with class "pizzas," the map method is used to iterate over the pizzaData array 
+      and generate a Pizza component for each pizza object in the array.
+      Each Pizza component is passed a pizzaObj prop containing the details of the specific pizza. */}
       <ul className="pizzas">
         {pizzaData.map((pizza) => (
           <Pizza pizzaObj = {pizza} key={pizza.name} />
         ))}
       </ul>
+      
 
+      {/* so after implementing the map we are getting something similar like the below one which has an extra element pizzaobj */}
       {/* <Pizza
         name="Pizza Prosciutto"
         ingredients="Tomato, mozarella, ham, aragula, and burrata cheese"
@@ -100,7 +107,8 @@ function Menu() {
 function Pizza(props) {
   return (
 
-    // and after that we are passing that pizzaObj props in it
+    // and after that we are passing that pizzaObj props in it 
+    // which I have got from using map a pizzaobj array of specific pizza obj
     <li className="pizza">
       <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
       <div>
