@@ -68,9 +68,21 @@ function Header() {
 }
 
 function Menu() {
+  const pizzas = pizzaData;
+  const numPizzas = pizzas.length;
   return (
     <main className="menu">
       <h2>Our Menu</h2>
+
+      {
+        numPizzas > 0 ? ( //ternery operator
+          <ul className="pizzas">
+            {pizzas.map((pizza) => (
+              <Pizza pizzaObj={pizza} key={pizza.name} />
+            ))}
+          </ul>
+        ) : <p>We're still working on our menu. Please come later.</p>
+      }
 
 
       {/* rendering the pizza data list by using the map method here */}
@@ -79,11 +91,7 @@ function Menu() {
       {/* Inside the ul element with class "pizzas," the map method is used to iterate over the pizzaData array 
       and generate a Pizza component for each pizza object in the array.
       Each Pizza component is passed a pizzaObj prop containing the details of the specific pizza. */}
-      <ul className="pizzas">
-        {pizzaData.map((pizza) => (
-          <Pizza pizzaObj = {pizza} key={pizza.name} />
-        ))}
-      </ul>
+      
       
 
       {/* so after implementing the map we are getting something similar like the below one which has an extra element pizzaobj */}
@@ -132,12 +140,13 @@ function Footer() {
 
   return (
     <footer className="footer">
-      {isOpen && ( //conditional rendering if the openhour and closehour value is accordingly set
+      {isOpen ? ( //conditional rendering if the openhour and closehour value is accordingly set 
         <div className="order">
           <p>We're open until {closeHour}:00. Come visit us or order online.</p>
           <button className="btn">Order</button>
         </div>
-      )}
+        // ternery operator
+      ) : <p>We're happy to welcome you betwen {openHour}:00 and {closeHour}:00</p>}
     </footer>
   );
 }
