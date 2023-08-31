@@ -141,14 +141,22 @@ function Footer() {
   return (
     <footer className="footer">
       {isOpen ? ( //conditional rendering if the openhour and closehour value is accordingly set 
-        <div className="order">
-          <p>We're open until {closeHour}:00. Come visit us or order online.</p>
-          <button className="btn">Order</button>
-        </div>
+        <Order closeHour={closeHour}/>
         // ternery operator
-      ) : <p>We're happy to welcome you betwen {openHour}:00 and {closeHour}:00</p>}
+      ) : (
+      <p>We're happy to welcome you betwen {openHour}:00 and {closeHour}:00</p>
+      )}
     </footer>
   );
+}
+
+function Order(props){
+  return (
+    <div className="order">
+      <p>We're open until {props.closeHour}:00. Come visit us or order online.</p>
+      <button className="btn">Order</button>
+    </div>
+  )
 }
 
 //React v18
